@@ -5,10 +5,14 @@ import { Form } from './components/Form';
 import {useState, useEffect} from 'react';
 
 import { MovieList } from './components/MovieList';
+import HeaderTitle from './components/HeaderTitle';
+import ExcitedList from './components/ExcitedList';
+import ModdyList from './components/ModdyList';
 
 function App  () {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState('nepal');
+  const [excitedMovies, setExcitedMovies] = useState([]);
 
 
 
@@ -24,23 +28,49 @@ function App  () {
     console.log(setMovies);
   
   };
+ 
+  const addExcitedMovie = (movie)  => {
+    const newExcitedList = [...excitedMovies, movie];
+    setExcitedMovies(newExcitedList);
+    console.log(setExcitedMovies);
+  };
+
+
+  const removeExcitedMovie = (movie)  => {
+    const newExcitedList = excitedMovies.filter(
+      (excitedX) => excitedX.imdbID !== movie.imdbID
+    );
+
+
+
+    setExcitedMovies(newExcitedList);
+    console.log(setExcitedMovies);
+  };
+
 	useEffect(() => {
 		getMovieRequest(search);
 	}, [search]);
 
 
-
+  
   
   return (
    
 
 
 <div className='container'>
+<HeaderTitle/>
 
   <Form  search={search} setSearch={setSearch}/>
 
-	<MovieList movies={movies} />
-	</div>
+	<MovieList movies={movies} excitedList = {ExcitedList} handleExcitedClick = {addExcitedMovie}/>
+
+  <div className='row'>
+    <MovieList movies={excitedMovies} excitedList = {ModdyList} handleExcitedClick = {removeExcitedMovie}/>
+
+
+  </div>
+  </div>
 		
   );
 } 

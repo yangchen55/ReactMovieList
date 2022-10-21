@@ -2,7 +2,10 @@ import React from 'react'
 
 const ExcitedList = () => {
   return (
-    <div>ExcitedList</div>
+    <>
+			<span className='mr-2'> Exciting movies 🤗</span>
+			
+		</>
   )
 }
 
