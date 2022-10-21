@@ -4,12 +4,12 @@ import ModdyList from './ModdyList'
 
 export const MovieList = (props) => {
   return (
-    <>
+    <div className='container mt-3'>
+<div className='d-inline-flex  flex-wrap m-3'>
+    
     {props.movies.map((movie, index)   => (
 
 
-<div className='image-container d-flex justify-content-start m-3'>
-    <div>
     <div className='card p-2'>
     <img src= {movie.Poster} className='card-img-top' alt='not aviable' /> 
     <div className='card-body'>
@@ -18,15 +18,18 @@ export const MovieList = (props) => {
       <button className='btn btn-primary m-2'> excited list</button>
       <button className='btn btn-danger'>Moddy list</button>
       </div>
-    </div>
   </div>
-    </div>
+  
 
 
     ))}
+    
+    </div>
+    <hr></hr>
     <ExcitedList/>
     <ModdyList/>
-    </>
+    </div>
+    
     
   )
 }
