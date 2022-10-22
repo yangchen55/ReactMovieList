@@ -11,8 +11,8 @@ import ModdyList from './components/ModdyList';
 
 function App  () {
   const [movies, setMovies] = useState([]);
-  const [search, setSearch] = useState('nepal');
-  const [excitedMovies, setExcitedMovies] = useState([]);
+  const [search, setSearch] = useState('yang');
+ 
 
 
 
@@ -29,23 +29,7 @@ function App  () {
   
   };
  
-  const addExcitedMovie = (movie)  => {
-    const newExcitedList = [...excitedMovies, movie];
-    setExcitedMovies(newExcitedList);
-    console.log(setExcitedMovies);
-  };
 
-
-  const removeExcitedMovie = (movie)  => {
-    const newExcitedList = excitedMovies.filter(
-      (excitedX) => excitedX.imdbID !== movie.imdbID
-    );
-
-
-
-    setExcitedMovies(newExcitedList);
-    console.log(setExcitedMovies);
-  };
 
 	useEffect(() => {
 		getMovieRequest(search);
@@ -59,17 +43,25 @@ function App  () {
 
 
 <div className='container'>
-<HeaderTitle/>
+   <HeaderTitle/>
 
   <Form  search={search} setSearch={setSearch}/>
 
-	<MovieList movies={movies} excitedList = {ExcitedList} handleExcitedClick = {addExcitedMovie}/>
+	{/* <MovieList movies={movies} excitedList = {excitedMovies} handleExcitedClick = {addExcitedMovie}  moddyList ={moddyMovies} handleModdyClick = {addModdyMovie}/> */}
+	<MovieList movies={movies}  />
 
-  <div className='row'>
-    <MovieList movies={excitedMovies} excitedList = {ModdyList} handleExcitedClick = {removeExcitedMovie}/>
+  {/* <div className='row'>
+    <h2>happy movies</h2>
+    <MovieList movies={excitedMovies} excitedList = {ExcitedList} handleExcitedClick = {removeExcitedMovie}/>
 
 
   </div>
+  <div className='row'>
+    <h2> sad movies</h2>
+    <MovieList movies={moddyMovies} moddyList = {ModdyList} handleModdyClick = {removeModdyMovie}/>
+
+
+  </div> */}
   </div>
 		
   );
